@@ -12,6 +12,8 @@ public class rottate : MonoBehaviour
     [Range(.001f, .004f)]
     public float zoomSpeed;
 
+    public Vector2 _startPosition;
+
     void Update()
     {
         if (Input.touchCount == 1)
@@ -26,48 +28,26 @@ public class rottate : MonoBehaviour
             }
         }
 
+        //Two finger rotation
         if(Input.touchCount == 2)
         {
-            Touch touch0 = Input.GetTouch(0);
-            Touch touch1 = Input.GetTouch(1);
+            var touchOne = Input.GetTouch(0);
+            var touchTwo = Input.GetTouch(1);
 
-            //Find what's left and right
-
-
-            //Rot 1
-            if (touch0.position.x < touch1.position.x)
+            if (touchOne.phase == TouchPhase.Began
+                || touchTwo.phase == TouchPhase.Began)
             {
-                //Counter clockwise
-                if(touch0.deltaPosition.x > 0 && touch0.deltaPosition.y > 0 && touch1.deltaPosition.x < 0 && touch1.deltaPosition.y < 0)
-                {
-                    print("counter clockwise");
-                    brainObject.transform.Rotate(0f, 0f, rotationSpeed * -5, Space.World);
-                }
-
-                //Clockwise
-                if (touch0.deltaPosition.x < 0 && touch0.deltaPosition.y < 0 && touch1.deltaPosition.x > 0 && touch1.deltaPosition.y > 0)
-                {
-                    print("clockwise");
-                    brainObject.transform.Rotate(0f, 0f, rotationSpeed * 5, Space.World);
-                }
-            }
-            else //Rot 2
-            {
-                //Counter clockwise
-                if (touch0.deltaPosition.x < 0 && touch0.deltaPosition.y > 0 && touch1.deltaPosition.x > 0 && touch1.deltaPosition.y < 0)
-                {
-                    print("counter clockwise");
-                    brainObject.transform.Rotate(0f, 0f, rotationSpeed * -5, Space.World);
-                }
-
-                //Clockwise
-                if (touch0.deltaPosition.x > 0 && touch0.deltaPosition.y < 0 && touch1.deltaPosition.x < 0 && touch1.deltaPosition.y > 0)
-                {
-                    print("clockwise");
-                    brainObject.transform.Rotate(0f, 0f, rotationSpeed * 5, Space.World);
-                }
+                _startPosition = touchTwo.position - touchOne.position;
             }
 
+            if (touchOne.phase == TouchPhase.Moved
+                || touchTwo.phase == TouchPhase.Moved)
+            {
+                var currVector = touchTwo.position - touchOne.position;
+                var angle = Vector2.SignedAngle(_startPosition, currVector);
+                brainObject.transform.RotateAround(brainObject.position, new Vector3(0,0,1), angle);
+                _startPosition = currVector;
+            }
         }
 
         if (Input.touchCount == 2)
@@ -97,6 +77,16 @@ public class rottate : MonoBehaviour
 
     public void ZoomEffect(float dist, float _zoomSpeed)
     {
-        brainObject.position += new Vector3(0,0,dist * _zoomSpeed);
+        if (brainObject.position.z > 10)
+        {
+            brainObject.position = new Vector3(brainObject.position.x, brainObject.position.y, 10);
+        }   else if (brainObject.position.z < -5)
+        {
+            brainObject.position = new Vector3(brainObject.position.x, brainObject.position.y, -5);
+        }
+        else
+        {
+            brainObject.position += new Vector3(0, 0, dist * _zoomSpeed);
+        }
     }
 }
