@@ -3840,10 +3840,9 @@ GameObject:
   - component: {fileID: 1206418786}
   - component: {fileID: 1206418785}
   - component: {fileID: 1206418784}
-  - component: {fileID: 1206418783}
   - component: {fileID: 1206418782}
   m_Layer: 5
-  m_Name: Part 13 (1)
+  m_Name: Scene Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3866,8 +3865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 262.19995, y: 77.5}
+  m_AnchoredPosition: {x: 691.3, y: 50}
+  m_SizeDelta: {x: 315.9, y: 117.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1206418782
 MonoBehaviour:
@@ -3883,18 +3882,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onColor: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 1}
   offColor: {r: 0.14901961, g: 0.14901961, b: 0.14901961, a: 1}
---- !u!114 &1206418783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206418780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a509301aebae184997eda76f929ab8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1206418784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3942,21 +3929,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206418783}
-        m_TargetAssemblyTypeName: BrainActivityToggle, Assembly-CSharp
-        m_MethodName: ToggleBrainActivity
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 39440042}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1206418782}
-        m_TargetAssemblyTypeName: ToggleChangeCol, Assembly-CSharp
-        m_MethodName: ChangeBackground
+      - m_Target: {fileID: 1726060169}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4055,7 +4030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.020377241, g: 0.020247415, b: 0.122641504, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5251,7 +5226,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Anden Scene
+  m_Text: SKIFT SCENE
 --- !u!222 &1520676056
 CanvasRenderer:
   m_ObjectHideFlags: 0
