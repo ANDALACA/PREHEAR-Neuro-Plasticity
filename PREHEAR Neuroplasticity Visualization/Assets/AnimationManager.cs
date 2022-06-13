@@ -14,38 +14,16 @@ public class AnimationManager : MonoBehaviour
     {
         if (smell)
         {
-            itemsAnimator.Play("Smell Cheese (Cheese)", -1);
-            manAnimator.Play("Smell Cheese (Armature)", -1);
+            itemsAnimator.SetTrigger("smelling trigger");
+            manAnimator.SetTrigger("smelling trigger");
+            smell = false;
         }
 
         if (kick)
         {
-            itemsAnimator.Play("Kick Ball (Ball)", -1);
-            manAnimator.Play("Kick Ball (Armature)", -1);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (smell)
-            {
-                itemsAnimator.Play("Idle (Items)", -1);
-                manAnimator.Play("Idle (Armature)", -1);
-            }
-
+            itemsAnimator.SetTrigger("kicking trigger");
+            manAnimator.SetTrigger("kicking trigger");
             kick = false;
-            smell = true;
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (kick)
-            {
-                itemsAnimator.Play("Idle (Items)", -1);
-                manAnimator.Play("Idle (Armature)", -1);
-            }
-
-            smell = false;
-            kick = true;
         }
     }
 
